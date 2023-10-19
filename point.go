@@ -6,7 +6,7 @@ type Point struct {
 	z float64
 }
 
-// Add returns a Point describing the destination arrived at by adding the Vector v to the Point p
+// Add returns a Point for the destination arrived at by adding the Vector v to the Point p
 func (p Point) Add(v Vector) Point {
 	return Point{
 		x: p.x + v.x,
@@ -15,7 +15,7 @@ func (p Point) Add(v Vector) Point {
 	}
 }
 
-// Subtract returns a Point describing the destination arrived at by subtracting the Vector v from the Point p
+// Subtract returns a Point for the destination arrived at by subtracting the Vector v from the Point p
 func (p Point) Subtract(v Vector) Point {
 	return Point{
 		x: p.x - v.x,
