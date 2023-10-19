@@ -6,8 +6,8 @@ type Vector struct {
 	z float64
 }
 
-// Difference is the result of subtracting Vector q from Vector v
-func (v Vector) Difference(q Vector) Vector {
+// Subtract is the result of subtracting Vector q from Vector v
+func (v Vector) Subtract(q Vector) Vector {
 	return Vector{
 		x: v.x - q.x,
 		y: v.y - q.y,
