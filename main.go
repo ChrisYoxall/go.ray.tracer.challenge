@@ -1,11 +1,12 @@
 package main
 
 import (
-	"log"
+	"log/slog"
 )
 
 func main() {
 
-	log.Println("Hello World!")
+	// Should I play with slog?
+	slog.Info("Hello World!", slog.Int("value", 123), slog.String("ip", "127.0.0.1"))
 
 }
