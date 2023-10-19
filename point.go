@@ -24,8 +24,8 @@ func (p Point) Subtract(v Vector) Point {
 	}
 }
 
-// DirectTo returns a Vector that points from the Point p to the Point q
-func (p Point) DirectTo(q Point) Vector {
+// VectorTo returns a Vector that points from the Point p to the Point q
+func (p Point) VectorTo(q Point) Vector {
 	return Vector{
 		x: q.x - p.x,
 		y: q.y - p.y,

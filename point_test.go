@@ -70,18 +70,18 @@ func TestSubtractingVectorFromPoint(t *testing.T) {
 	}
 }
 
-// TestDirectTo checks that the DirectTo method returns the correct Vector to navigate from one Point to another
-func TestTestDirectTo(t *testing.T) {
+// TestDirectTo checks that the VectorTo method returns the correct Vector to navigate from one Point to another
+func TestTestVectorTo(t *testing.T) {
 
 	start := Point{x: 5, y: 6, z: 7}
 
 	end := Point{x: 3, y: 2, z: 1}
 
-	result := start.DirectTo(end)
+	result := start.VectorTo(end)
 
 	expected := Vector{x: -2, y: -4, z: -6}
 
 	if result != expected {
-		t.Errorf("Point 'DirectTo' methond failed. Got: %v, want: %v.", result, expected)
+		t.Errorf("Point 'VectorTo' methond failed. Got: %v, want: %v.", result, expected)
 	}
 }
