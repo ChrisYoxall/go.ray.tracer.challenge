@@ -14,3 +14,12 @@ func (v Vector) Subtract(q Vector) Vector {
 		z: v.z - q.z,
 	}
 }
+
+// Opposite returns the opposite of Vector v
+func (v Vector) Opposite() Vector {
+	return Vector{
+		x: -v.x,
+		y: -v.y,
+		z: -v.z,
+	}
+}
