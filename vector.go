@@ -8,12 +8,17 @@ type Vector struct {
 	z float64
 }
 
-// Subtract is the result of subtracting Vector q from Vector v
-func (v Vector) Subtract(q Vector) Vector {
+// Equals returns true if the Vector v is equal to the Vector w
+func (v Vector) Equals(w Vector) bool {
+	return FloatEqual(v.x, w.x) && FloatEqual(v.y, w.y) && FloatEqual(v.z, w.z)
+}
+
+// Subtract is the result of subtracting Vector v from Vector w
+func (v Vector) Subtract(w Vector) Vector {
 	return Vector{
-		x: v.x - q.x,
-		y: v.y - q.y,
-		z: v.z - q.z,
+		x: v.x - w.x,
+		y: v.y - w.y,
+		z: v.z - w.z,
 	}
 }
 
@@ -46,18 +51,18 @@ func (v Vector) Normalise() Vector {
 	return v.Multiply(1 / v.Magnitude())
 }
 
-// DotProduct returns the dot product of Vector v and Vector q.
+// DotProduct returns the dot product of Vector v and Vector w.
 // The smaller the dot product, the larger the angle between the two vectors.
-func (v Vector) DotProduct(q Vector) float64 {
-	return v.x*q.x + v.y*q.y + v.z*q.z
+func (v Vector) DotProduct(w Vector) float64 {
+	return v.x*w.x + v.y*w.y + v.z*w.z
 }
 
-// CrossProduct returns the cross product of Vector v and Vector q.
-// The cross product is a vector perpendicular to both v and q.
-func (v Vector) CrossProduct(q Vector) Vector {
+// CrossProduct returns the cross product of Vector v and Vector w.
+// The cross product is a vector perpendicular to both v and w.
+func (v Vector) CrossProduct(w Vector) Vector {
 	return Vector{
-		x: v.y*q.z - v.z*q.y,
-		y: v.z*q.x - v.x*q.z,
-		z: v.x*q.y - v.y*q.x,
+		x: v.y*w.z - v.z*w.y,
+		y: v.z*w.x - v.x*w.z,
+		z: v.x*w.y - v.y*w.x,
 	}
 }

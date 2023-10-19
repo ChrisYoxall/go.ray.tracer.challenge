@@ -6,6 +6,11 @@ type Point struct {
 	z float64
 }
 
+// Equals returns true if the Point p is equal to the Point q
+func (p Point) Equals(q Point) bool {
+	return FloatEqual(p.x, q.x) && FloatEqual(p.y, q.y) && FloatEqual(p.z, q.z)
+}
+
 // Add returns a Point for the destination arrived at by adding the Vector v to the Point p
 func (p Point) Add(v Vector) Point {
 	return Point{

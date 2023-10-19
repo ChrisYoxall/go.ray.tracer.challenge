@@ -2,6 +2,24 @@ package main
 
 import "testing"
 
+// TestVectorEquality tests that the Equals method returns true when the vectors are equal
+func TestVectorEquality(t *testing.T) {
+
+	x := 2.33
+	y := 3.0
+	z := -4.76
+
+	v := Vector{x: x, y: y, z: z}
+
+	q := Vector{x: x, y: y, z: z}
+
+	equal := v.Equals(q)
+
+	if !equal {
+		t.Errorf("Vectors are equal. Got: %t, want: %t.", equal, true)
+	}
+}
+
 // TestSubtractingVectors tests that the Subtract method returns the correct vector
 func TestSubtractingVectors(t *testing.T) {
 
@@ -12,7 +30,7 @@ func TestSubtractingVectors(t *testing.T) {
 
 	expected := Vector{x: -2, y: -4, z: -6}
 
-	if result != expected {
+	if !result.Equals(expected) {
 		t.Errorf("Vector 'Subtract' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
@@ -26,7 +44,7 @@ func TestOpposite(t *testing.T) {
 
 	expected := Vector{x: -1, y: 2, z: -3}
 
-	if result != expected {
+	if !result.Equals(expected) {
 		t.Errorf("Vector 'Opposite' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
@@ -40,7 +58,7 @@ func TestMultiplyingVectorByScalar(t *testing.T) {
 
 	expected := Vector{x: 0.5, y: -1, z: 1.5}
 
-	if result != expected {
+	if !result.Equals(expected) {
 		t.Errorf("Vector 'Multiply' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
@@ -54,7 +72,7 @@ func TestMagnitude(t *testing.T) {
 
 	expected := float64(3)
 
-	if result != expected {
+	if !FloatEqual(result, expected) {
 		t.Errorf("Vector 'Magnitude' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
@@ -73,12 +91,12 @@ func TestNormalise(t *testing.T) {
 	m := v.Magnitude()
 	expected := Vector{x: 1 / m, y: 2 / m, z: 3 / m}
 
-	if result != expected {
+	if !result.Equals(expected) {
 		t.Errorf("Vector 'Normalise' method failed. Got: %v, want: %v.", result, expected)
 	}
 
 	mag := result.Magnitude()
-	if mag != 1 {
+	if !FloatEqual(mag, float64(1)) {
 		t.Errorf("Vector 'Normalise' method failed. The magnitude of a normalised Vector should be 1. Got: %v, want: %v.", mag, 1)
 	}
 }
@@ -93,7 +111,7 @@ func TestDotProduct(t *testing.T) {
 
 	expected := float64(20)
 
-	if result != expected {
+	if !FloatEqual(result, expected) {
 		t.Errorf("Vector 'DotProduct' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
@@ -108,7 +126,7 @@ func TestCrossProduct(t *testing.T) {
 
 	expected := Vector{x: -1, y: 2, z: -1}
 
-	if result != expected {
+	if !result.Equals(expected) {
 		t.Errorf("Vector 'CrossProduct' method failed. Got: %v, want: %v.", result, expected)
 	}
 }
